@@ -9,8 +9,34 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @ObservedObject var stopwatch = Stopwatch()
+    
     var body: some View {
-        Text("Hello, World!")
+        VStack {
+            HStack {
+                Button(action: {
+                    self.stopwatch.start()
+                }) {
+                    Text("Start")
+                }
+                
+                Button(action: {
+                    self.stopwatch.reset()
+                }) {
+                    Text("Reset")
+                }
+                
+                Button(action: {
+                    self.stopwatch.stop()
+                }) {
+                    Text("Stop")
+                }
+            }
+            
+            Text("\(self.stopwatch.counter)초")
+        }.font(.title)
+        .padding()
     }
 }
 
